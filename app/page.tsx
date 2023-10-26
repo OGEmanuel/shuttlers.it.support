@@ -17,14 +17,15 @@ export default function Home() {
 
   const router = useRouter();
 
-  let isValid = false;
+  let isValid =
+    emailValue.includes("@shuttlers.ng") && passwordValue.length >= 5;
 
   const handleSubmitLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     console.log(`Email: ${emailValue}, Password: ${passwordValue}`);
 
-    if (emailValue.includes("@shuttlers.ng") && passwordValue.length >= 5) {
+    if (isValid) {
       isValid = true;
       router.push("/dashboard");
       setLoading(false);
