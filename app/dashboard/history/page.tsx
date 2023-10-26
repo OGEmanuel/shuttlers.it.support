@@ -11,13 +11,13 @@ const History = () => {
         action=""
         className="flex gap-5 border-b border-[#EBEBEB] pb-5 mb-5"
       >
-        <InputWithLabel className="rounded-2xl" label="Number" />
-        <InputWithLabel className="rounded-2xl" label="Name" />
-        <InputWithLabel className="rounded-2xl" label="Staff" />
-        <InputWithLabel className="rounded-2xl" label="Engineer" />
-        <InputWithLabel className="rounded-2xl" label="Status" />
-        <InputWithLabel className="rounded-2xl" label="Priority" />
-        <InputWithLabel className="rounded-2xl" label="Title" />
+        <InputWithLabel type="text" className="rounded-2xl" label="Number" />
+        <InputWithLabel type="text" className="rounded-2xl" label="Name" />
+        <InputWithLabel type="text" className="rounded-2xl" label="Staff" />
+        <InputWithLabel type="text" className="rounded-2xl" label="Engineer" />
+        <InputWithLabel type="text" className="rounded-2xl" label="Status" />
+        <InputWithLabel type="text" className="rounded-2xl" label="Priority" />
+        <InputWithLabel type="text" className="rounded-2xl" label="Title" />
       </form>
       <div className="flex justify-between">
         <Dropdown />

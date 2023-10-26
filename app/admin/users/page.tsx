@@ -16,8 +16,20 @@ const Users = () => {
         action=""
         className="flex gap-5 border-b border-[#EBEBEB] pb-5 mb-5"
       >
-        <InputWithLabel className="rounded-2xl" label="Name" />
-        <InputWithLabel className="rounded-2xl" label="Email" />
+        <InputWithLabel
+          type="text"
+          // onSetInputValue={setPasswordValue}
+          // inputValue={passwordValue}
+          className="rounded-2xl"
+          label="Name"
+        />
+        <InputWithLabel
+          type="email"
+          // onSetInputValue={setPasswordValue}
+          // inputValue={passwordValue}
+          className="rounded-2xl"
+          label="Email"
+        />
       </form>
       <div className="flex flex-col gap-5 border-b border-[#EBEBEB] pb-5 mb-5">
         {users.map((user) => (

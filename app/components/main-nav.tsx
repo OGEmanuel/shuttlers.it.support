@@ -1,11 +1,13 @@
-import { Button } from "@/components/ui/button";
 import AddIcon from "../icons/add-icon";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { usePathname } from "next/navigation";
 import CustomButton from "./button";
+import { useFormatDate } from "../util/useFormatDate";
 
 const MainNav = () => {
   const pathname = usePathname();
+  const date = new Date();
+  const formattedDate = useFormatDate(date);
   const tickets = "/dashboard/tickets";
   const history = "/dashboard/history";
   const users = "/admin/users";
@@ -28,7 +30,7 @@ const MainNav = () => {
     >
       <div className="md:block xl:gap-0 gap-2.5 flex flex-col">
         {/* <MenuIcon className="md:hidden" onClick={handleClick} /> */}
-        <p className="text-[#7B7B7B] text-xs">3rd October, 2023</p>
+        <p className="text-[#7B7B7B] text-xs">{formattedDate}</p>
         <h1 className="md:text-2xl text-lg text-[#0A0A0A]">{title}</h1>
       </div>
       <div className="flex gap-2 md:gap-7">

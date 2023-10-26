@@ -54,7 +54,7 @@ const Sidebar = () => {
           <Link
             href={link.path}
             key={link.title}
-            className={`flex items-center gap-4 mb-5 py-2.5 px-5 hover:bg-[#F7F7F7] hover:rounded-xl cursor-pointer ml-1 ${
+            className={`flex items-center gap-4 mb-5 py-2.5 px-5 hover:bg-[#F7F7F7] rounded-xl cursor-pointer ml-1 ${
               pathname === link.path ? "bg-[#F7F7F7]" : "bg-transparent"
             }`}
           >

@@ -16,8 +16,16 @@ const Staff = () => {
         action=""
         className="flex gap-5 border-b border-[#EBEBEB] pb-5 mb-5"
       >
-        <InputWithLabel className="rounded-2xl" label="Staff Name" />
-        <InputWithLabel className="rounded-2xl" label="Contact Email" />
+        <InputWithLabel
+          type="text"
+          className="rounded-2xl"
+          label="Staff Name"
+        />
+        <InputWithLabel
+          type="text"
+          className="rounded-2xl"
+          label="Contact Email"
+        />
       </form>
       <div className="flex flex-col gap-5 border-b border-[#EBEBEB] pb-5 mb-5">
         {users.map((user) => (

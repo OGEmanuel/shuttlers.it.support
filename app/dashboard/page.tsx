@@ -6,7 +6,7 @@ const Dashboard = () => {
         <p>Open Tickets</p>
         <p>0</p>
       </div>
-      <div className="flex justify-between items-start w-full shadow-[0px_0px_32px_0px_rgba(204,204,204,0.25)] px-10 py-20">
+      <div className="flex justify-between items-start w-full rounded-2xl shadow-[0px_0px_32px_0px_rgba(204,204,204,0.25)] px-10 py-20">
         <p className="">Closed Tickets</p>
         <p>0</p>
       </div>

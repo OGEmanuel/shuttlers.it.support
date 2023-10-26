@@ -3,7 +3,6 @@
 import CustomButton from "@/app/components/button";
 import { Dropdown } from "@/app/components/dropdown";
 import { InputWithLabel } from "@/app/components/input";
-import { Button } from "@/components/ui/button";
 
 const Tickets = () => {
   return (
@@ -12,10 +11,10 @@ const Tickets = () => {
         action=""
         className="flex gap-5 border-b border-[#EBEBEB] pb-5 mb-5"
       >
-        <InputWithLabel className="rounded-2xl" label="Number" />
-        <InputWithLabel className="rounded-2xl" label="Name" />
-        <InputWithLabel className="rounded-2xl" label="Priority" />
-        <InputWithLabel className="rounded-2xl" label="Title" />
+        <InputWithLabel type="text" className="rounded-2xl" label="Number" />
+        <InputWithLabel type="text" className="rounded-2xl" label="Name" />
+        <InputWithLabel type="text" className="rounded-2xl" label="Priority" />
+        <InputWithLabel type="text" className="rounded-2xl" label="Title" />
       </form>
       <div className="flex justify-between">
         <Dropdown />
