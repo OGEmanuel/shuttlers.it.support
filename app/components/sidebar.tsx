@@ -107,31 +107,6 @@ const Sidebar = () => {
           ulClassName="list-disc list-outside py-2 mx-8"
           pClassName="text-xs"
         />
-        {/* <div
-          className={`overflow-auto scroll transition-all ${
-            openDropdown
-              ? "translate-y-0 h-40 border-[#EBEBEB] bg-[#F7F7F7]"
-              : "-translate-y-10 h-0 border-transparent"
-          } border shadow-[0px_0px_32px_0px_rgba(204,204,204,0.25)] rounded-2xl`}
-        >
-          <ul className="list-disc list-outside py-2 mx-8">
-            {PoliciesNavlink.map((link) => (
-              <li key={link.title}>
-                <Link
-                  href={link.path}
-                  target="_blank"
-                  className={`flex items-center gap-4 mb-2 hover:bg-[#F7F7F7] rounded-xl cursor-pointer ${
-                    pathname === link.path ? "bg-[#F7F7F7]" : "bg-transparent"
-                  }`}
-                >
-                  <p className={`text-xs text-[#060606] hover:font-bold`}>
-                    {link.title}
-                  </p>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div> */}
       </div>
     </aside>
   );
