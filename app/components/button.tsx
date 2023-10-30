@@ -2,12 +2,15 @@ import { Button } from "@/components/ui/button";
 const CustomButton = ({
   children,
   className,
+  onClick,
 }: {
   children: React.ReactNode;
   className?: string;
+  onClick?: () => void;
 }) => {
   return (
     <Button
+      onClick={onClick}
       className={`${
         className?.includes("bg")
           ? `${className}`

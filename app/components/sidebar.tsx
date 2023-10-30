@@ -1,12 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import logo from "@/public/logo.png";
+import logo from "@/public/logo.svg";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MainNavLink, PoliciesNavlink, SubNavLink } from "./navlinks";
 import { ChevronRightIcon, LucideChevronRightSquare } from "lucide-react";
 import { useState } from "react";
+import Dialogue from "./dialogue";
 
 /* 72px - Narrow 768px-1263px  */
 /* 244px - Medium 1264px-1919 */
@@ -99,7 +100,14 @@ const Sidebar = () => {
           </div>
         </button>
 
-        <div
+        <Dialogue
+          open={openDropdown}
+          data={PoliciesNavlink}
+          pathname={pathname}
+          ulClassName="list-disc list-outside py-2 mx-8"
+          pClassName="text-xs"
+        />
+        {/* <div
           className={`overflow-auto scroll transition-all ${
             openDropdown
               ? "translate-y-0 h-40 border-[#EBEBEB] bg-[#F7F7F7]"
@@ -123,7 +131,7 @@ const Sidebar = () => {
               </li>
             ))}
           </ul>
-        </div>
+        </div> */}
       </div>
     </aside>
   );
