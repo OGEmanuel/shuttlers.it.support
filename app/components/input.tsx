@@ -14,7 +14,7 @@ type inputLabelPropsType = {
 export function InputWithLabel(props: inputLabelPropsType) {
   const { label, className, type, onSetInputValue, inputValue } = props;
   return (
-    <div className="grid w-full max-w-sm items-center gap-1.5">
+    <div className="grid w-[10rem] max-w-sm items-center gap-1.5">
       <Label htmlFor="email">{label}</Label>
       <Input
         type={type}

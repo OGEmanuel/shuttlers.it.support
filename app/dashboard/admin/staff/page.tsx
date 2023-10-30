@@ -9,7 +9,30 @@ const users = [
   { id: 2, name: "Shuttlers IT", email: "it@shuttlers.ng" },
 ];
 
-const Users = () => {
+const pages = [
+  {
+    value: "10",
+    label: "10",
+  },
+  {
+    value: "20",
+    label: "20",
+  },
+  {
+    value: "30",
+    label: "30",
+  },
+  {
+    value: "40",
+    label: "40",
+  },
+  {
+    value: "50",
+    label: "50",
+  },
+];
+
+const Staff = () => {
   return (
     <div className="shadow-[0px_0px_32px_0px_rgba(204,204,204,0.25)] rounded-2xl px-10 py-10">
       <form
@@ -18,17 +41,13 @@ const Users = () => {
       >
         <InputWithLabel
           type="text"
-          // onSetInputValue={setPasswordValue}
-          // inputValue={passwordValue}
           className="rounded-2xl"
-          label="Name"
+          label="Staff Name"
         />
         <InputWithLabel
-          type="email"
-          // onSetInputValue={setPasswordValue}
-          // inputValue={passwordValue}
+          type="text"
           className="rounded-2xl"
-          label="Email"
+          label="Contact Email"
         />
       </form>
       <div className="flex flex-col gap-5 border-b border-[#EBEBEB] pb-5 mb-5">
@@ -46,7 +65,7 @@ const Users = () => {
         ))}
       </div>
       <div className="flex justify-between">
-        <Dropdown />
+        <Dropdown data={pages} tag="Show" />
         <div className="gap-5 flex">
           <CustomButton>Previous</CustomButton>
           <CustomButton>Next</CustomButton>
@@ -56,4 +75,4 @@ const Users = () => {
   );
 };
 
-export default Users;
+export default Staff;

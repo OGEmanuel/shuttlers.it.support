@@ -4,6 +4,29 @@ import CustomButton from "@/app/components/button";
 import { Dropdown } from "@/app/components/dropdown";
 import { InputWithLabel } from "@/app/components/input";
 
+const pages = [
+  {
+    value: "10",
+    label: "10",
+  },
+  {
+    value: "20",
+    label: "20",
+  },
+  {
+    value: "30",
+    label: "30",
+  },
+  {
+    value: "40",
+    label: "40",
+  },
+  {
+    value: "50",
+    label: "50",
+  },
+];
+
 const History = () => {
   return (
     <div className="shadow-[0px_0px_32px_0px_rgba(204,204,204,0.25)] rounded-2xl px-10 py-10">
@@ -20,7 +43,7 @@ const History = () => {
         <InputWithLabel type="text" className="rounded-2xl" label="Title" />
       </form>
       <div className="flex justify-between">
-        <Dropdown />
+        <Dropdown data={pages} tag="Show" />
         <div className="gap-5 flex">
           <CustomButton>Previous</CustomButton>
           <CustomButton>Next</CustomButton>

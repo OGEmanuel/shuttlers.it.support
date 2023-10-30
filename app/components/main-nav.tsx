@@ -10,23 +10,41 @@ const MainNav = () => {
   const formattedDate = useFormatDate(date);
   const tickets = "/dashboard/tickets";
   const history = "/dashboard/history";
-  const users = "/admin/users";
-  const staff = "/admin/staff";
-  let title = "Welcome, IT!";
+  const sla = "/dashboard/sla";
+  const customersat = "/dashboard/customersat";
+  const assets = "/dashboard/org-assets";
+  const requester = "/dashboard/requester";
+  const onboarding = "/dashboard/onboarding";
+  const offboarding = "/dashboard/offboarding";
+  const users = "/dashboard/admin/users";
+  const staff = "/dashboard/admin/staff";
+  let title = "Dashboard";
 
   if (pathname === tickets) {
     title = "Tickets";
   } else if (pathname === history) {
     title = "History";
   } else if (pathname === users) {
-    title = "Users";
+    title = "Team";
   } else if (pathname === staff) {
     title = "Staff";
+  } else if (pathname === sla) {
+    title = "SLA";
+  } else if (pathname === customersat) {
+    title = "Customer Satisfaction";
+  } else if (pathname === assets) {
+    title = "Assets";
+  } else if (pathname === requester) {
+    title = "Requester Portal";
+  } else if (pathname === onboarding) {
+    title = "Onboarding";
+  } else if (pathname === offboarding) {
+    title = "Offboarding";
   }
 
   return (
     <nav
-      className={`flex items-center justify-between xl:items-center py-6 mb-7`}
+      className={`flex items-center justify-between relative py-6 mb-7 border-b border-[#EBEBEB]`}
     >
       <div className="md:block xl:gap-0 gap-2.5 flex flex-col">
         {/* <MenuIcon className="md:hidden" onClick={handleClick} /> */}
@@ -44,6 +62,10 @@ const MainNav = () => {
             IT
           </AvatarFallback>
         </Avatar>
+      </div>
+      <div className="absolute w-full h-[1px] bottom-0 left-0">
+        <div className="bg-gradient-to-r from-white to-current via-current h-full w-1/2 left-0 absolute"></div>
+        <div className="bg-gradient-to-r from-current to-white via-current h-full w-1/2 right-0 absolute"></div>
       </div>
     </nav>
   );

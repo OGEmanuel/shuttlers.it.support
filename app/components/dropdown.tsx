@@ -18,30 +18,13 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-const frameworks = [
-  {
-    value: "10",
-    label: "10",
-  },
-  {
-    value: "20",
-    label: "20",
-  },
-  {
-    value: "30",
-    label: "30",
-  },
-  {
-    value: "40",
-    label: "40",
-  },
-  {
-    value: "50",
-    label: "50",
-  },
-];
-
-export function Dropdown() {
+export function Dropdown({
+  data,
+  tag,
+}: {
+  data: { value: string; label: string }[];
+  tag: string;
+}) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
 
@@ -55,15 +38,15 @@ export function Dropdown() {
           className="w-[200px] justify-between"
         >
           {value
-            ? frameworks.find((framework) => framework.value === value)?.label
-            : "Show"}
+            ? data.find((framework) => framework.value === value)?.label
+            : tag}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
         <Command>
           <CommandGroup>
-            {frameworks.map((framework) => (
+            {data.map((framework) => (
               <CommandItem
                 key={framework.value}
                 value={framework.value}
