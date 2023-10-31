@@ -12,7 +12,7 @@ const Auth = () => {
   const [rePassword, setRePassword] = useState("");
   const [error, setError] = useState(false);
 
-  const [variant, setVariant] = useState("login");
+  const [variant, setVariant] = useState("Login");
 
   const router = useRouter();
 
@@ -97,7 +97,7 @@ const Auth = () => {
         </div>
         <button
           type="submit"
-          className="bg-[#1FAD32] py-3 text-white rounded-md w-full mt-10 hover-bg-red-700 transition"
+          className="bg-[#1FAD32] hover:bg-[#7ee1b0] py-3 text-white rounded-md w-full mt-10 hover-bg-red-700 transition"
         >
           {variant === "Login" ? "Login" : "Sign Up!"}
         </button>
@@ -107,7 +107,7 @@ const Auth = () => {
             : "Already a Superhuman?"}
           <span
             onClick={toggleVariant}
-            className="text-[#1FAD32] ml-1 hover:underline cursor-pointer"
+            className="text-[#1FAD32] hover:text-[#7ee1b0] ml-1 hover:underline cursor-pointer"
           >
             {variant === "Login" ? "Create an Account" : "Login"}
           </span>
