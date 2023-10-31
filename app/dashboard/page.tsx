@@ -1,7 +1,21 @@
+"use client";
+
+import { ArrowRightIcon } from "lucide-react";
 import CustomButton from "../components/button";
 import DashLinks from "../components/dashboard-links";
+import { useState } from "react";
 
 const Dashboard = () => {
+  const [hover, setHover] = useState(false);
+
+  const handleMouseEnter = () => {
+    setHover(true);
+  };
+
+  const handleMouseLeave = () => {
+    setHover(false);
+  };
+
   return (
     <>
       <div className="flex justify-between flex-wrap text-lg gap-20 font-bold mb-20">
@@ -22,9 +36,20 @@ const Dashboard = () => {
           <p>0</p>
         </DashLinks>
       </div>
-      <div className="flex justify-end">
-        <CustomButton className="bg-[#0AAE5B] hover:bg-[#7ee1b0]">
-          Generate Report
+      <div className="flex">
+        <CustomButton
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          className={`hover:underline w-max bg-[#1FAD32] gap-4 flex items-center hover:bg-[#7ee1b0]`}
+        >
+          <p>Generate Report</p>
+          <div
+            className={`${
+              hover ? "translate-x-4" : "translate-x-0"
+            } transition`}
+          >
+            <ArrowRightIcon />
+          </div>
         </CustomButton>
       </div>
     </>

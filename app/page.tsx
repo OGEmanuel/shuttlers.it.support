@@ -1,128 +1,120 @@
 "use client";
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { InputWithLabel } from "./components/input";
-import CustomButton from "./components/button";
-import { useState } from "react";
+import { FormEvent, useCallback, useState } from "react";
+import AuthInput from "./components/authInput";
 import { useRouter } from "next/navigation";
 
-export default function Home() {
-  const [emailValue, setEmailValue] = useState<string>("");
-  const [passwordValue, setPasswordValue] = useState<string>("");
-  const [rePasswordValue, setRePasswordValue] = useState<string>("");
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<boolean>(false);
-  const [firstnameValue, setFirstnameValue] = useState<string>("");
-  const [lastnameValue, setLastnameValue] = useState<string>("");
+const Auth = () => {
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [rePassword, setRePassword] = useState("");
+  const [error, setError] = useState(false);
+
+  const [variant, setVariant] = useState("login");
 
   const router = useRouter();
 
-  let isValid =
-    emailValue.includes("@shuttlers.ng") && passwordValue.length >= 5;
+  let isValid = email.includes("@shuttlers.ng") && password.length >= 8;
 
-  const handleSubmitLogin = (e: React.FormEvent<HTMLFormElement>) => {
+  const toggleVariant = useCallback(() => {
+    setVariant((curVar) => (curVar === "Login" ? "Register" : "Login"));
+  }, []);
+
+  const handleSubmitLogin = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true);
-    console.log(`Email: ${emailValue}, Password: ${passwordValue}`);
+    console.log(`Email: ${email}, Password: ${password}`);
 
     if (isValid) {
       isValid = true;
       router.push("/dashboard");
-      setLoading(false);
     }
 
-    setEmailValue("");
-    setPasswordValue("");
+    setEmail("");
+    setPassword("");
 
     if (!isValid) {
-      setLoading(false);
       setError(true);
       return;
     }
   };
 
   return (
-    <main className="w-max mx-auto mt-10">
-      <Tabs
-        defaultValue="login"
-        className="w-[400px] rounded-xl py-10 shadow-[0px_0px_32px_0px_rgba(204,204,204,0.25)] px-10"
+    <div className="flex justify-center">
+      <form
+        onSubmit={handleSubmitLogin}
+        className="shadow-[0px_0px_32px_0px_rgba(204,204,204,0.25)] border border-[#EBEBEB] bg-opacity-70 px-16 py-16 self-center mt-2 lg:w-2/5 lgmax-w-md rounded-xl w-full"
       >
-        <TabsList>
-          <TabsTrigger value="login">Login</TabsTrigger>
-          <TabsTrigger value="signup">Sign Up</TabsTrigger>
-        </TabsList>
-        <TabsContent value="login" className="py-10">
-          <form
-            onSubmit={handleSubmitLogin}
-            action=""
-            className="flex flex-col gap-5 mb-5"
-          >
-            <InputWithLabel
-              type="email"
-              className="rounded-2xl"
-              label="Email"
-              onSetInputValue={setEmailValue}
-              inputValue={emailValue}
+        <h2 className="text-[#060606] text-4xl mb-8 font-semibold">
+          {variant === "Login" ? "Sign In" : "Register"}
+        </h2>
+        <div className="flex flex-col gap-4">
+          {variant === "Register" && (
+            <AuthInput
+              label="Firstname"
+              onChange={(e: any) => setFirstname(e.target.value)}
+              id="firstname"
+              value={firstname}
             />
-            <InputWithLabel
-              className="rounded-2xl"
-              label="Password"
-              type="password"
-              onSetInputValue={setPasswordValue}
-              inputValue={passwordValue}
+          )}
+          {variant === "Register" && (
+            <AuthInput
+              label="Lastname"
+              onChange={(e: any) => setLastname(e.target.value)}
+              id="lastname"
+              value={lastname}
             />
-            <CustomButton>{loading ? "Loading..." : "Login"}</CustomButton>
-          </form>
+          )}
+          <AuthInput
+            label="Email"
+            onChange={(e: any) => setEmail(e.target.value)}
+            id="email"
+            type="email"
+            value={email}
+          />
+          <AuthInput
+            label="Password"
+            type="password"
+            onChange={(e: any) => setPassword(e.target.value)}
+            id="password"
+            value={password}
+          />
+          {variant === "Register" && (
+            <AuthInput
+              label="Re-enter Password"
+              onChange={(e: any) => setRePassword(e.target.value)}
+              id="re-password"
+              value={rePassword}
+            />
+          )}
           {error && (
             <p className="text-[red] text-sm mb-2.5">
-              *Wrong Login Credentials, Please Try again!
+              *Wrong Login Credentials, Please try again with your work mail
+              details
             </p>
           )}
-          <p>New user? Switch to the signup tab!</p>
-        </TabsContent>
-        <TabsContent value="signup" className="py-10">
-          <form action="" className="flex flex-col gap-5 mb-5">
-            <InputWithLabel
-              type="text"
-              className="rounded-2xl"
-              label="Firstname"
-              onSetInputValue={setFirstnameValue}
-              inputValue={firstnameValue}
-            />
-            <InputWithLabel
-              type="text"
-              className="rounded-2xl"
-              label="Lastname"
-              onSetInputValue={setLastnameValue}
-              inputValue={lastnameValue}
-            />
-            <InputWithLabel
-              type="email"
-              className="rounded-2xl"
-              label="Email"
-              onSetInputValue={setEmailValue}
-              inputValue={emailValue}
-            />
-            <InputWithLabel
-              type="password"
-              className="rounded-2xl"
-              label="Password"
-              onSetInputValue={setPasswordValue}
-              inputValue={passwordValue}
-            />
-            <InputWithLabel
-              type="password"
-              className="rounded-2xl"
-              label="Re-enter Password"
-              onSetInputValue={setRePasswordValue}
-              inputValue={rePasswordValue}
-            />
-
-            <CustomButton>Sign Up!</CustomButton>
-          </form>
-          <p>Already signedup? Switch to the login tab!</p>
-        </TabsContent>
-      </Tabs>
-    </main>
+        </div>
+        <button
+          type="submit"
+          className="bg-[#1FAD32] py-3 text-white rounded-md w-full mt-10 hover-bg-red-700 transition"
+        >
+          {variant === "Login" ? "Login" : "Sign Up!"}
+        </button>
+        <p className="text-[#060606] mt-12">
+          {variant === "Login"
+            ? "Not yet a Superhuman?"
+            : "Already a Superhuman?"}
+          <span
+            onClick={toggleVariant}
+            className="text-[#1FAD32] ml-1 hover:underline cursor-pointer"
+          >
+            {variant === "Login" ? "Create an Account" : "Login"}
+          </span>
+        </p>
+      </form>
+    </div>
   );
-}
+};
+
+export default Auth;

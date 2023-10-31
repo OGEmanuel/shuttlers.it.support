@@ -3,14 +3,20 @@ const CustomButton = ({
   children,
   className,
   onClick,
+  onMouseEnter,
+  onMouseLeave,
 }: {
   children: React.ReactNode;
   className?: string;
   onClick?: () => void;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 }) => {
   return (
     <Button
       onClick={onClick}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
       className={`${
         className?.includes("bg")
           ? `${className}`
